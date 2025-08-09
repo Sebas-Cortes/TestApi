@@ -1,20 +1,13 @@
-from rest_framework.decorators import api_view
-from rest_framework.response import Response
+from rest_framework import generics
+from .models import Cliente
+from .serializers import ClienteSerializer
 
 
-@api_view(["POST"])
-def crear_cliente(request):
-    """Crea un cliente de ejemplo."""
-    return Response("cliente creado")
+class ClienteListCreateView(generics.ListCreateAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer
 
 
-@api_view(["GET"])
-def listar_clientes(request):
-    """Lista clientes de ejemplo."""
-    return Response("Lista de clientes")
-
-
-@api_view(["DELETE"])
-def eliminar_clientes(request):
-    """Elimina un cliente de ejemplo."""
-    return Response("Cliente eliminado")
+class ClienteDetailView(generics.RetrieveUpdateDestroyAPIView):
+    queryset = Cliente.objects.all()
+    serializer_class = ClienteSerializer

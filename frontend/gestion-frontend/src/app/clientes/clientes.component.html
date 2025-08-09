@@ -1,0 +1,9 @@
+<form [formGroup]="form" (ngSubmit)="crearCliente()">
+  <input formControlName="nombre" placeholder="Nombre" />
+  <input formControlName="email" placeholder="Email" />
+  <button type="submit">Crear</button>
+</form>
+
+<ul>
+  <li *ngFor="let c of clientes">{{ c.nombre }} - {{ c.email }}</li>
+</ul>
